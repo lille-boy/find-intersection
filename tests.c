@@ -47,6 +47,8 @@ static void test_1(void)
     find_intersection(input, output);
 
     test_result("test 1", output, "1, 4, 13");
+
+	free(output);
 }
 
 /******************************************************************************
@@ -59,6 +61,8 @@ static void test_2(void)
     find_intersection(input, output);
 
     test_result("test 2", output, "1, 9, 10");
+
+	free(output);
 }
 
 /******************************************************************************
@@ -71,6 +75,8 @@ static void test_3(void)
     find_intersection(input, output);
 
     test_result("test 3", output, "-4, 1, 4, 13");
+
+	free(output);
 }
 
 /******************************************************************************
@@ -83,6 +89,8 @@ static void test_4(void)
     find_intersection(input, output);
 
     test_result("test 4", output, "false");
+
+	free(output);
 }
 
 /******************************************************************************
@@ -95,6 +103,8 @@ static void test_5(void)
     find_intersection(input, output);
 
     test_result("test 5", output, "1, 4, 9, 10, 18, 34");
+
+	free(output);
 }
 
 /******************************************************************************
