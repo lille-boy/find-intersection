@@ -35,8 +35,8 @@ static void extract_array(char *token, char *array)
 void find_intersection(char *input_string, char *intersection)
 {
     size_t size = sizeof(char) * (strlen(input_string) + 1);
-    char *array1 = (char*)malloc(size);
-    char *array2 = (char*)malloc(size);
+    char *array1 = (char*)malloc(size * sizeof(char));
+    char *array2 = (char*)malloc(size * sizeof(char));
 
     intersection[0] = '\0';
 
@@ -46,33 +46,39 @@ void find_intersection(char *input_string, char *intersection)
 
     /* Extract first array */
     char *token = strtok(input_string, delimiter);
-    extract_array(token, array1);
+    if (array1 != NULL) {
+        extract_array(token, array1);
 
-    /* Extract second array */
-    token = strtok(NULL, delimiter);
-    extract_array(token, array2);
+        /* Extract second array */
+        token = strtok(NULL, delimiter);
+        if (array2 != NULL) {
+            extract_array(token, array2);
 
-    /* Find intersection */
-    if ((token = strtok(array2, ", ")) != NULL) {
-        if (strstr(array1, token) != NULL) {
-            strcpy(intersection, token);
-        }
-        while( (token = strtok(NULL, ", ")) != NULL) {
-            if (strstr(array1, token) != NULL) {
-                if (intersection[0] == '\0') {
+            /* Find intersection */
+            if ((token = strtok(array2, ", ")) != NULL) {
+                if (strstr(array1, token) != NULL) {
                     strcpy(intersection, token);
                 }
-                else {
-                    strcat(intersection, ", ");
-                    strcat(intersection, token);
+                while( (token = strtok(NULL, ", ")) != NULL) {
+                    if (strstr(array1, token) != NULL) {
+                        if (intersection[0] == '\0') {
+                            strcpy(intersection, token);
+                        }
+                        else {
+                            strcat(intersection, ", ");
+                            strcat(intersection, token);
+                        }
+                    }
                 }
             }
+            free(array2);
         }
+        free(array1);
     }
 
     /* No intersection found */
     if (intersection[0] == '\0') {
-        memcpy(intersection, "false", 5);
+        memcpy(intersection, "false", 6);
     }
 
     if (DEBUG > 0) {
