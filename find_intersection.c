@@ -12,6 +12,7 @@
 #include "find_intersection.h"
 
 const char delimiter[2] = "\"";
+const char no_intersection[6] = "false";
 
 /******************************************************************************
  * Function that extracts one array from the input string
@@ -78,7 +79,7 @@ void find_intersection(char *input_string, char *intersection)
 
     /* No intersection found */
     if (intersection[0] == '\0') {
-        memcpy(intersection, "false", 6);
+        memcpy(intersection, no_intersection, sizeof(no_intersection));
     }
 
     if (DEBUG > 0) {
