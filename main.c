@@ -35,7 +35,7 @@ int main(int argc, char *argv[])
 
                 size_t size = sizeof(char) * (strlen(input_string) + 1);
                 char *intersection = (char*)malloc(size);
-                intersection = find_intersection(input_string);
+                find_intersection(input_string, intersection);
                 printf("Output: %s\n", intersection);
             }
             fclose(input_file);

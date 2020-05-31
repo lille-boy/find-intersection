@@ -32,16 +32,16 @@ static void extract_array(char *token, char *array)
 /******************************************************************************
  * Function that finds the numbers that appear in both input arrays
  *****************************************************************************/
-char* find_intersection(char *input_string)
+void find_intersection(char *input_string, char *intersection)
 {
     size_t size = sizeof(char) * (strlen(input_string) + 1);
     char *array1 = (char*)malloc(size);
     char *array2 = (char*)malloc(size);
-    char *intersection = (char*)malloc(size);
+
     intersection[0] = '\0';
 
     if (DEBUG > 0) {
-        printf("Input string: %s", input_string);
+        printf("Input string: %s ", input_string);
     }
 
     /* Extract first array */
@@ -72,12 +72,10 @@ char* find_intersection(char *input_string)
 
     /* No intersection found */
     if (intersection[0] == '\0') {
-        intersection = "false";
+        memcpy(intersection, "false", 5);
     }
 
     if (DEBUG > 0) {
         printf("intersection: %s\n", intersection);
     }
-
-    return intersection;
 }

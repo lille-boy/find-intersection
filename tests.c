@@ -44,7 +44,7 @@ static void test_1(void)
 {
     char input[] = "[\"1, 3, 4, 7, 13\", \"1, 2, 4, 13, 15\"]";
     char* output = (char*)malloc(sizeof(char) * (strlen(input) + 1));
-    output = find_intersection(input);
+    find_intersection(input, output);
 
     test_result("test 1", output, "1, 4, 13");
 }
@@ -56,7 +56,7 @@ static void test_2(void)
 {
     char input[] = "[\"1, 3, 9, 10, 17, 18\", \"1, 4, 9, 10\"]";
     char* output = (char*)malloc(sizeof(char) * (strlen(input) + 1));
-    output = find_intersection(input);
+    find_intersection(input, output);
 
     test_result("test 2", output, "1, 9, 10");
 }
@@ -68,7 +68,7 @@ static void test_3(void)
 {
     char input[] = "[\"-4, 1, 3, 4, 7, 13\", \"-4, -1, 1, 2, 4, 13, 15\"]";
     char* output = (char*)malloc(sizeof(char) * (strlen(input) + 1));
-    output = find_intersection(input);
+    find_intersection(input, output);
 
     test_result("test 3", output, "-4, 1, 4, 13");
 }
@@ -80,7 +80,7 @@ static void test_4(void)
 {
     char input[] = "[\"-4, 1, 3, 4, 7, 13\", \"-2, -1, 0, 2, 15\"]";
     char* output = (char*)malloc(sizeof(char) * (strlen(input) + 1));
-    output = find_intersection(input);
+    find_intersection(input, output);
 
     test_result("test 4", output, "false");
 }
@@ -92,7 +92,7 @@ static void test_5(void)
 {
     char input[] = "[\"1, 3, 4, 9, 10, 17, 18, 22, 34, 35, 42\", \"1, 4, 9, 10, 18, 24, 34, 36\"]";
     char* output = (char*)malloc(sizeof(char) * (strlen(input) + 1));
-    output = find_intersection(input);
+    find_intersection(input, output);
 
     test_result("test 5", output, "1, 4, 9, 10, 18, 34");
 }
